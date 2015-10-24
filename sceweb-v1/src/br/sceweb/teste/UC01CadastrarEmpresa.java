@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import br.sceweb.modelo.Empresa;
 import br.sceweb.modelo.EmpresaDAO;
-
+import br.sceweb.modelo.Controle;
 
 public class UC01CadastrarEmpresa {
 	static EmpresaDAO empresaDAO;
@@ -59,17 +59,55 @@ public class UC01CadastrarEmpresa {
 			assertEquals("CNPJ inválido!",e.getMessage());
 		}
 	}
+
+
+
 	/**
 	 * obj - verificar o comportamento do sistema no cadastro de uma empresa com dados invalidos*/
 	public void CT04UC01A4Cadastra_com_dados_invalidos(){
+		Empresa empresa2 = new Empresa();
+		try{
+			empresa2.setNomeDaEmpresa("");
 
+		}catch(Exception e){
+			assertEquals("nome da empresa inválido!", e.getMessage());
+		}
+		try{
+			empresa2.setEndereco("");
+
+		}catch(Exception e){
+			assertEquals("endereço inválido!", e.getMessage());
+		}
+
+		try{
+			empresa2.setNomeFantasia("");
+
+		}catch(Exception e){
+			assertEquals("nome fantasia inválido!", e.getMessage());
+		}
+		try{
+			empresa2.setTelefone("");
+
+		}catch(Exception e){
+			assertEquals("telefone inválido!", e.getMessage());
+		}
+
+		try{
+			empresa2.setCnpj("");
+
+		}catch(Exception e){
+			assertEquals("cnpj inválido!", e.getMessage());
+		}
 	}
+@Test
+public void CT05UC02Cadastrar_empresa_com_sucesso(){
+	
+}
 	@AfterClass
 	/**
 	 * obj - exclui o cnpj ao finalizar o teste*/
 	public static void tearDownAfterClass() throws Exception {
-		//empresaDAO = new EmpresaDAO();
-		//empresaDAO.exclui("89424232000180");
+		empresaDAO.exclui("89424232000180");
 	}
 
 
