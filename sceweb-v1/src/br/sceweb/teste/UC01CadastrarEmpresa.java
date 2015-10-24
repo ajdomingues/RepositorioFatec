@@ -36,7 +36,7 @@ public class UC01CadastrarEmpresa {
 	@Test
 	public void CT01UC01FBCadastra_empresa_com_sucesso() throws SQLException {
 		empresaDAO.exclui("89424232000180");
-		assertEquals("cadastro realizado com sucesso", empresaDAO.adiciona(empresa));
+		assertEquals(1, empresaDAO.adiciona(empresa));
 		empresaDAO.exclui("89424232000180");
 	}
 	/**
